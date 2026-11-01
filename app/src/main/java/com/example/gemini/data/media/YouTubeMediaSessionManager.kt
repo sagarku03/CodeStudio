@@ -43,9 +43,9 @@ object YouTubeMediaSessionManager {
     private const val CHANNEL_ID = "antigravity_youtube_playback"
     private const val NOTIFICATION_ID = 8092
 
-    const val ACTION_YT_PLAY = "com.antigem.action.YT_PLAY"
-    const val ACTION_YT_PAUSE = "com.antigem.action.YT_PAUSE"
-    const val ACTION_YT_STOP = "com.antigem.action.YT_STOP"
+    const val ACTION_YT_PLAY = "com.codestudio.ide.action.YT_PLAY"
+    const val ACTION_YT_PAUSE = "com.codestudio.ide.action.YT_PAUSE"
+    const val ACTION_YT_STOP = "com.codestudio.ide.action.YT_STOP"
 
     private val scope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -406,7 +406,7 @@ object YouTubeMediaSessionManager {
         ensureChannelCreated(context)
         registerReceiver(context)
 
-        mediaSession = MediaSession(context, "AntiGemYouTubeMedia").apply {
+        mediaSession = MediaSession(context, "CodeStudioYouTubeMedia").apply {
             setCallback(object : MediaSession.Callback() {
                 override fun onPlay() {
                     runOnMainThread { play() }

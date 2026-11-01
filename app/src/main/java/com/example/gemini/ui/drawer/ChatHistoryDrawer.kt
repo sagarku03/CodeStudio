@@ -425,7 +425,7 @@ fun ChatHistoryDrawer(
             },
             title = {
                 Text(
-                    text = "Exit AntiGem?",
+                    text = "Exit CodeStudio?",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface
@@ -1767,7 +1767,7 @@ private fun ChatHistoryItemRow(
                     },
                     onClick = {
                         menuExpanded = false
-                        com.example.gemini.ui.components.AppToastHelper.showToast("Preparing .antigem share...", com.example.gemini.ui.components.ChatToastType.INFO)
+                        com.example.gemini.ui.components.AppToastHelper.showToast("Preparing CodeStudio chat share...", com.example.gemini.ui.components.ChatToastType.INFO)
                         scope.launch(Dispatchers.IO) {
                             ConversationShareHelper.shareConversation(
                                 context = context,

@@ -3,7 +3,7 @@
     <!-- Pure white splash background -->
     <item android:drawable="@android:color/white" />
 
-    <!-- Centered AntiGem Logo -->
+    <!-- Centered CodeStudio Logo -->
     <item
         android:gravity="center"
         android:width="160dp"
@@ -16,4 +16,3 @@
             android:gravity="center" />
     </item>
 </layer-list>
-

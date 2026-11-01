@@ -55,7 +55,7 @@ open class TermuxService : Service(), LifecycleOwner, ViewModelStoreOwner, Saved
 
     companion object {
         private const val TAG = "TermuxService"
-        private const val CHANNEL_ID = "antigem_termux_service_channel"
+        private const val CHANNEL_ID = "codestudio_termux_service_channel"
         private const val NOTIFICATION_ID = 1337
 
         const val ACTION_WAKE_LOCK = "com.termux.service_wake_lock"
@@ -164,7 +164,7 @@ open class TermuxService : Service(), LifecycleOwner, ViewModelStoreOwner, Saved
 
     private fun setupNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "AntiGem Terminal & Execution Service"
+            val name = "CodeStudio Terminal & Execution Service"
             val descriptionText = "Terminal sessions and background execution"
             val importance = NotificationManager.IMPORTANCE_LOW
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
@@ -227,7 +227,7 @@ open class TermuxService : Service(), LifecycleOwner, ViewModelStoreOwner, Saved
         val priority = if (wakeLockHeld) NotificationCompat.PRIORITY_HIGH else NotificationCompat.PRIORITY_LOW
 
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("AntiGem")
+            .setContentTitle("CodeStudio")
             .setContentText(notificationText)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setContentIntent(pendingIntent)

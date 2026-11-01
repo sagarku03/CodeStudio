@@ -32,7 +32,7 @@ class TermuxApiReceiver : BroadcastReceiver() {
 
     companion object {
         private const val TAG = "TermuxApiReceiver"
-        private const val API_NOTIFICATION_CHANNEL_ID = "antigem_termux_api_notifications"
+        private const val API_NOTIFICATION_CHANNEL_ID = "codestudio_termux_api_notifications"
         private var ttsInstance: TextToSpeech? = null
     }
 

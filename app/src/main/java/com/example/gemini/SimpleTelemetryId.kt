@@ -8,10 +8,10 @@ import java.util.UUID
 
 object SimpleTelemetryId {
 
-    // App salt used to make the hash unique to AntiGem.
+    // App salt used to make the hash unique to CodeStudio.
     // The raw Android ID is never sent. TelemetryDeck receives only this hash,
     // then hashes it again with its own salt.
-    private const val APP_SALT = "k9X#mP2\$vL9!zQ_ANTIGEM_STABLE_SALT_5tG"
+    private const val APP_SALT = "k9X#mP2\$vL9!zQ_CODESTUDIO_STABLE_SALT_5tG"
 
     fun getUniqueUserId(context: Context): String {
         // 1. Retrieve persistent Android ID. On Android 8+ this stays the same

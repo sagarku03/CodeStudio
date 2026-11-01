@@ -11,7 +11,7 @@ if [ -z "${BASH_VERSION:-}" ]; then
 fi
 
 # ==============================================================================
-# antiGem IDE & AGY Projects Backup Packager
+# CodeStudio IDE & AGY Projects Backup Packager
 # ==============================================================================
 set -euo pipefail
 
@@ -20,7 +20,7 @@ HOME_DIR="${HOME:-/data/data/com.termux/files/home}"
 TMP_ROOT="${TMPDIR:-${PREFIX_DIR}/tmp}"
 mkdir -p "$TMP_ROOT"
 
-BACKUP_DIR="/sdcard/Download/Antigem/backups"
+BACKUP_DIR="/sdcard/Download/CodeStudio/backups"
 TIMESTAMP="$(date +"%Y-%m-%d-%H-%M-%S")"
 ZIP_BASENAME="projects_backup_${TIMESTAMP}.zip"
 OUTPUT_ZIP="${1:-${BACKUP_DIR}/${ZIP_BASENAME}}"
@@ -31,7 +31,7 @@ BACKUP_MODE="${2:-git}" # "git" (exclude ignored/node_modules) or "full" (raw ex
 shift 2 || true
 
 echo "================================================"
-echo "       antiGem Projects Backup Packager         "
+echo "       CodeStudio Projects Backup Packager         "
 echo "================================================"
 echo "Output Archive : $OUTPUT_ZIP"
 echo "Backup Mode    : $BACKUP_MODE (git-aware / full)"

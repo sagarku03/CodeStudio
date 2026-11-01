@@ -84,7 +84,7 @@ import com.example.gemini.data.daemon.TermuxDaemonManager
 import com.example.gemini.data.daemon.IdeApiClient
 
 enum class SettingsSection(val title: String, val subtitle: String) {
-    MAIN("Settings & Preferences", "Configure your AntiGem experience"),
+    MAIN("Settings & Preferences", "Configure your CodeStudio experience"),
     APPEARANCE("Appearance & Theme", "Theme, dark mode, and chat font scaling"),
     SERVERS("Servers & Connectivity", "Configure AGY Hub and IDE Bridge endpoints"),
     WEBVIEW_EXTENSIONS("WebView Extensions", "Install and manage MCP extensions for the browser"),
@@ -1124,7 +1124,7 @@ private fun AppearanceSubScreen(
                         color = ClaudeTerracotta.copy(alpha = 0.15f)
                     ) {
                         Text(
-                            text = "How does AntiGem connect to AGY Hub?",
+                            text = "How does CodeStudio connect to AGY Hub?",
                             fontSize = (13 * chatFontScale).sp,
                             color = MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp)
@@ -1144,7 +1144,7 @@ private fun AppearanceSubScreen(
                     ) {
                         Column(modifier = Modifier.padding(12.dp)) {
                             Text(
-                                text = "AntiGem connects via gRPC-Web to stream live agent steps and tool executions.",
+                                text = "CodeStudio connects via gRPC-Web to stream live agent steps and tool executions.",
                                 fontSize = (13 * chatFontScale).sp,
                                 lineHeight = (18 * chatFontScale).sp,
                                 color = MaterialTheme.colorScheme.onSurface
@@ -1670,7 +1670,7 @@ private fun AppearanceSubScreen(
                                 ) {
                                     androidx.compose.foundation.Image(
                                         painter = androidx.compose.ui.res.painterResource(id = com.example.gemini.R.drawable.splash_logo),
-                                        contentDescription = "AntiTerm",
+                                        contentDescription = "CodeStudio Terminal",
                                         modifier = Modifier.size(26.dp)
                                     )
                                 }
@@ -1679,13 +1679,13 @@ private fun AppearanceSubScreen(
 
                                 Column(modifier = Modifier.weight(1f)) {
                                     Text(
-                                        text = "AntiTerm",
+                                        text = "CodeStudio Terminal",
                                         fontSize = 13.sp,
                                         fontWeight = FontWeight.SemiBold,
                                         color = MaterialTheme.colorScheme.onSurface
                                     )
                                     Text(
-                                        text = "Modern AntiGem styled icon & name",
+                                        text = "Modern CodeStudio styled icon & name",
                                         fontSize = 10.5.sp,
                                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                                     )
@@ -1935,7 +1935,7 @@ private fun ServersSubScreen(
             },
             title = {
                 Text(
-                    text = "Reopen AntiGem?",
+                    text = "Reopen CodeStudio?",
                     fontWeight = FontWeight.Bold,
                     fontSize = 17.sp
                 )
@@ -2218,7 +2218,7 @@ private fun ServersSubScreen(
                 )
                 if (com.example.gemini.data.local.LocalEnvironmentManager.isTermuxPackage(LocalContext.current)) {
                     Text(
-                        text = "• Claude Code: the default is AntiGem's launcher, which runs the newest official Claude version through the bundled glibc. Claude updates never replace it.",
+                        text = "• Claude Code: the default is CodeStudio's launcher, which runs the newest official Claude version through the bundled glibc. Claude updates never replace it.",
                         fontSize = 11.sp,
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                     )
@@ -4377,7 +4377,7 @@ private fun TerminalSubScreen(
                     )
 
                     Text(
-                        text = "AntiGem is wiping all local app data, rootfs, and settings.\n\nThe app will automatically close in $countdownSeconds seconds. Simply re-open AntiGem to start fresh.",
+                        text = "CodeStudio is wiping all local app data, rootfs, and settings.\n\nThe app will automatically close in $countdownSeconds seconds. Simply re-open AntiGem to start fresh.",
                         fontSize = 13.5.sp,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         textAlign = androidx.compose.ui.text.style.TextAlign.Center,
@@ -4599,7 +4599,7 @@ private fun BackupsSubScreen(
                         Icon(Icons.Outlined.Folder, contentDescription = null, modifier = Modifier.size(14.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(
-                            text = "Saves to: /sdcard/Download/Antigem/backups/bootrapz_<timestamp>.zip",
+                            text = "Saves to: /sdcard/Download/CodeStudio/backups/bootrapz_<timestamp>.zip",
                             fontSize = 11.sp,
                             fontFamily = FontFamily.Monospace,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
@@ -4718,7 +4718,7 @@ private fun BackupsSubScreen(
                         Icon(Icons.Outlined.Folder, contentDescription = null, modifier = Modifier.size(14.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(
-                            text = "Saves to: /sdcard/Download/Antigem/backups/agy_chats_backup_<timestamp>.zip",
+                            text = "Saves to: /sdcard/Download/CodeStudio/backups/agy_chats_backup_<timestamp>.zip",
                             fontSize = 11.sp,
                             fontFamily = FontFamily.Monospace,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
@@ -5743,7 +5743,7 @@ private fun ProjectsBackupRestoreDialog(
                                 inspectArchive(it.trim())
                             },
                             label = { Text("Projects Archive File Path") },
-                            placeholder = { Text("/sdcard/Download/Antigem/backups/projects_backup_....zip") },
+                            placeholder = { Text("/sdcard/Download/CodeStudio/backups/projects_backup_....zip") },
                             singleLine = true,
                             trailingIcon = {
                                 IconButton(onClick = { filePickerLauncher.launch("*/*") }) {
@@ -6265,7 +6265,7 @@ private fun DataProtectionSubScreen(
 
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
-                    text = "Why enable this? AntiGem hosts a full local Linux environment with your Node/Python packages, Git repos, and active coding projects. An accidental drag-to-uninstall from the home screen wipes all of it permanently.\n\nActivating Android Device Administrator greys out the 'Uninstall' button at the OS level across phone launchers. You can safely disable this anytime if you wish to uninstall.",
+                    text = "Why enable this? CodeStudio hosts a full local Linux environment with your Node/Python packages, Git repos, and active coding projects. An accidental drag-to-uninstall from the home screen wipes all of it permanently.\n\nActivating Android Device Administrator greys out the 'Uninstall' button at the OS level across phone launchers. You can safely disable this anytime if you wish to uninstall.",
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                     lineHeight = 16.sp
@@ -6410,7 +6410,7 @@ private fun DataProtectionSubScreen(
 
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
-                    text = "When enabled (default), tapping 'Clear Data' in Android's phone Settings > App Info opens AntiGem's Safe Space Manager instead of wiping everything instantly with one click. This prevents accidental wipes and allows safe cache-only cleanup.\n\nYou can toggle this off anytime if you prefer the standard raw Android 'Clear Data' button.",
+                    text = "When enabled (default), tapping 'Clear Data' in Android's phone Settings > App Info opens CodeStudio's Safe Space Manager instead of wiping everything instantly with one click. This prevents accidental wipes and allows safe cache-only cleanup.\n\nYou can toggle this off anytime if you prefer the standard raw Android 'Clear Data' button.",
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                     lineHeight = 16.sp
@@ -6443,7 +6443,7 @@ private fun DataProtectionSubScreen(
             title = { Text("Disable Uninstall Protection?") },
             text = {
                 Text(
-                    "This will remove AntiGem's Device Admin status. The app will become vulnerable to accidental home-screen uninstallation.",
+                    "This will remove CodeStudio's Device Admin status. The app will become vulnerable to accidental home-screen uninstallation.",
                     fontSize = 13.sp
                 )
             },
@@ -8755,13 +8755,13 @@ private fun AboutSubScreen(
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 Text(
-                    text = "AntiGem",
+                    text = "CodeStudio",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = "Antigravity Mobile Hub & AI Pair Programmer",
+                    text = "CodeStudio Mobile IDE & AI Pair Programmer • Created by Sagar (sagarku03)",
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center
@@ -8799,6 +8799,42 @@ private fun AboutSubScreen(
                     color = MaterialTheme.colorScheme.onSurface
                 )
 
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Developer",
+                        fontSize = 12.5.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Text(
+                        text = "Sagar (sagarku03)",
+                        fontSize = 12.5.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+                HorizontalDivider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "Contact",
+                        fontSize = 12.5.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Text(
+                        text = "sagargaming450@gmail.com",
+                        fontSize = 12.sp,
+                        fontFamily = FontFamily.Monospace,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+                HorizontalDivider(color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.08f))
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -8944,8 +8980,8 @@ private fun AboutSubScreen(
                                         updateCheckResultText = null
                                     } else {
                                         isUpdateCheckError = false
-                                        updateCheckResultText = "AntiGem is up to date (v${BuildConfig.VERSION_NAME})."
-                                        Toast.makeText(context, "AntiGem is up to date!", Toast.LENGTH_SHORT).show()
+                                        updateCheckResultText = "CodeStudio is up to date (v${BuildConfig.VERSION_NAME})."
+                                        Toast.makeText(context, "CodeStudio is up to date!", Toast.LENGTH_SHORT).show()
                                     }
                                 }.onFailure { err ->
                                     isUpdateCheckError = true

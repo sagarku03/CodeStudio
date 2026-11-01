@@ -67,7 +67,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
-            <!-- Open / View .antigem and trajectory chat files -->
+            <!-- Open / View .codestudio / .antigem and trajectory chat files -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -112,7 +112,7 @@
                 <data android:mimeType="text/*" />
             </intent-filter>
 
-            <!-- Receive shared .antigem, markdown, and text/code files from system share sheet -->
+            <!-- Receive shared .codestudio, markdown, and text/code files from system share sheet -->
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -138,7 +138,7 @@
             android:configChanges="uiMode|orientation|screenSize|screenLayout|smallestScreenSize"
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
-        <!-- AntiTerm Default Style Launcher Alias -->
+        <!-- CodeStudio Terminal Default Style Launcher Alias -->
         <activity-alias
             android:name=".TermuxAntiTermAlias"
             android:targetActivity=".TermuxActivity"
@@ -263,7 +263,7 @@
         <activity
             android:name="com.example.gemini.ui.settings.ManageSpaceActivity"
             android:exported="true"
-            android:label="AntiGem Space Manager"
+            android:label="CodeStudio Space Manager"
             android:theme="@style/Theme.Gemini">
             <intent-filter>
                 <action android:name="android.intent.action.MANAGE_SPACE" />

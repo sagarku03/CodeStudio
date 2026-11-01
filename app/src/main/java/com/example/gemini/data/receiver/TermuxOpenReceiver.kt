@@ -22,7 +22,7 @@ open class TermuxOpenReceiver : BroadcastReceiver() {
 
     companion object {
         private const val TAG = "TermuxOpenReceiver"
-        private const val CHANNEL_ID = "antigem_termux_open_channel"
+        private const val CHANNEL_ID = "codestudio_termux_open_channel"
         private const val NOTIFICATION_ID = 1338
 
         fun handleOpen(context: Context, intent: Intent) {

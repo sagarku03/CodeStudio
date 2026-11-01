@@ -389,7 +389,7 @@ class BrowserSessionManager private constructor() {
     fun loadShortcutsIfNeeded(context: Context) {
         if (shortcutsLoaded) return
         shortcutsLoaded = true
-        val prefs = context.applicationContext.getSharedPreferences("antigem_browser_shortcuts", Context.MODE_PRIVATE)
+        val prefs = context.applicationContext.getSharedPreferences("codestudio_browser_shortcuts", Context.MODE_PRIVATE)
         val json = prefs.getString("shortcuts_json", null) ?: return
         try {
             val arr = JSONArray(json)
@@ -414,7 +414,7 @@ class BrowserSessionManager private constructor() {
     fun loadHistoryIfNeeded(context: Context) {
         if (historyLoaded) return
         historyLoaded = true
-        val prefs = context.applicationContext.getSharedPreferences("antigem_browser_history", Context.MODE_PRIVATE)
+        val prefs = context.applicationContext.getSharedPreferences("codestudio_browser_history", Context.MODE_PRIVATE)
         val json = prefs.getString("typed_history_json", null) ?: return
         try {
             val arr = JSONArray(json)
@@ -464,7 +464,7 @@ class BrowserSessionManager private constructor() {
     }
 
     private fun saveHistory(context: Context) {
-        val prefs = context.applicationContext.getSharedPreferences("antigem_browser_history", Context.MODE_PRIVATE)
+        val prefs = context.applicationContext.getSharedPreferences("codestudio_browser_history", Context.MODE_PRIVATE)
         try {
             val arr = JSONArray()
             typedHistory.forEach { item ->
@@ -492,7 +492,7 @@ class BrowserSessionManager private constructor() {
     }
 
     private fun saveShortcuts(context: Context) {
-        val prefs = context.applicationContext.getSharedPreferences("antigem_browser_shortcuts", Context.MODE_PRIVATE)
+        val prefs = context.applicationContext.getSharedPreferences("codestudio_browser_shortcuts", Context.MODE_PRIVATE)
         try {
             val arr = JSONArray()
             shortcuts.forEach { sc ->

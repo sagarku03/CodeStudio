@@ -194,13 +194,13 @@ fun TerminalLauncherOnboardingDialog(
                                 ) {
                                     Image(
                                         painter = painterResource(id = R.drawable.splash_logo),
-                                        contentDescription = "AntiGem",
+                                        contentDescription = "CodeStudio",
                                         modifier = Modifier.size(42.dp)
                                     )
                                 }
                                 Spacer(modifier = Modifier.height(6.dp))
                                 Text(
-                                    text = "AntiGem",
+                                    text = "CodeStudio",
                                     fontSize = 11.5.sp,
                                     fontWeight = FontWeight.Medium,
                                     color = MaterialTheme.colorScheme.onSurface
@@ -251,14 +251,14 @@ fun TerminalLauncherOnboardingDialog(
                                     } else {
                                         Image(
                                             painter = painterResource(id = R.drawable.splash_logo),
-                                            contentDescription = "AntiTerm",
+                                            contentDescription = "CodeStudio Terminal",
                                             modifier = Modifier.size(42.dp)
                                         )
                                     }
                                 }
                                 Spacer(modifier = Modifier.height(6.dp))
                                 Text(
-                                    text = if (!isEnabled) "Hidden" else if (selectedStyle == TerminalLauncherManager.STYLE_TERMUX) "Termux" else "AntiTerm",
+                                    text = if (!isEnabled) "Hidden" else if (selectedStyle == TerminalLauncherManager.STYLE_TERMUX) "Termux" else "CodeStudio Terminal",
                                     fontSize = 11.5.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = if (!isEnabled) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface
@@ -365,7 +365,7 @@ fun TerminalLauncherOnboardingDialog(
                                 ) {
                                     Image(
                                         painter = painterResource(id = R.drawable.splash_logo),
-                                        contentDescription = "AntiTerm",
+                                        contentDescription = "CodeStudio Terminal",
                                         modifier = Modifier.size(30.dp)
                                     )
                                 }
@@ -374,13 +374,13 @@ fun TerminalLauncherOnboardingDialog(
 
                                 Column(modifier = Modifier.weight(1f)) {
                                     Text(
-                                        text = "AntiTerm",
+                                        text = "CodeStudio Terminal",
                                         fontSize = 13.5.sp,
                                         fontWeight = FontWeight.SemiBold,
                                         color = MaterialTheme.colorScheme.onSurface
                                     )
                                     Text(
-                                        text = "Modern unified icon matching AntiGem",
+                                        text = "Modern unified icon matching CodeStudio",
                                         fontSize = 11.sp,
                                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
                                     )

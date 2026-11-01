@@ -46,7 +46,7 @@ object AgyOkHttpClient {
                 }
 
                 val request = chain.request().newBuilder()
-                    .header("User-Agent", "antiGem-Android-Native")
+                    .header("User-Agent", "CodeStudio-Android-Native")
                     .header("X-Grpc-Web", "1")
                     .header(AuthPreferences.currentFramedHeader, token.ifBlank { "true" })
                     .build()

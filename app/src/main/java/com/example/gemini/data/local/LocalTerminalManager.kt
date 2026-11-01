@@ -68,7 +68,7 @@ class LocalPtySession(
     initialWidthPx: Int = 800,
     initialHeightPx: Int = 480
 ) : TerminalSessionClient {
-    private val TAG = "AntiGemTerminal"
+    private val TAG = "CodeStudioTerminal"
 
     var assignedPaneId: String? = initialPaneId
     var assignedWindowId: String? = initialWindowId
@@ -1162,7 +1162,7 @@ class LocalPtySession(
 }
 
 object LocalTerminalManager {
-    private const val TAG = "AntiGemTerminal"
+    private const val TAG = "CodeStudioTerminal"
     private const val TMUX_SESSION_NAME = "antigem"
 
     var lastKnownCols: Int = 60

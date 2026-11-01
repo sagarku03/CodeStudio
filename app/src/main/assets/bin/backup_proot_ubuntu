@@ -1,12 +1,12 @@
 #!/bin/bash
 # ==============================================================================
-# AntiGem Ubuntu (PRoot) Rootfs Packager - run INSIDE the Ubuntu container
+# CodeStudio Ubuntu (PRoot) Rootfs Packager - run INSIDE the Ubuntu container
 # Entries are stored relative to the rootfs root (etc/, usr/, root/, ...).
 # ==============================================================================
 set -euo pipefail
 trap 'echo -e "\n\033[1;31m[ERROR]\033[0m Backup failed at line $LINENO: \x27$BASH_COMMAND\x27" >&2' ERR
 
-BACKUP_DIR="/sdcard/Download/Antigem/backups"
+BACKUP_DIR="/sdcard/Download/CodeStudio/backups"
 TIMESTAMP="$(date +"%Y-%m-%d-%H-%M-%S")"
 OUTPUT_ZIP="${1:-${BACKUP_DIR}/ubuntu_${TIMESTAMP}.zip}"
 TEMP_ZIP="/tmp/ubuntu-rootfs-bundle-${TIMESTAMP}.zip"
@@ -142,7 +142,7 @@ if [ ! -s "$TEMP_ZIP" ]; then
     exit 1
 fi
 
-echo "[2/3] Exporting archive to Antigem backups storage..."
+echo "[2/3] Exporting archive to CodeStudio backups storage..."
 mkdir -p "$(dirname "$OUTPUT_ZIP")"
 cp "$TEMP_ZIP" "$OUTPUT_ZIP"
 rm -f "$TEMP_ZIP"
