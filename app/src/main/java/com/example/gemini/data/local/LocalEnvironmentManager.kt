@@ -64,7 +64,7 @@ object LocalEnvironmentManager {
     const val HARDCODED_ROOTFS_URL = "https://github.com/sagarku03/CodeStudio/releases/download/rootfs-v1/bootrapz_2026-10-04.zip"
     const val HARDCODED_ROOTFS_TAG = "rootfs-v1"
     const val HARDCODED_ROOTFS_ASSET = "bootrapz_2026-10-04.zip"
-    const val HARDCODED_ROOTFS_SIZE_BYTES = 350 * 1024 * 1024L
+    const val HARDCODED_ROOTFS_SIZE_BYTES = 368321070L
 
     const val UBUNTU_ROOTFS_URL = "https://github.com/termux/proot-distro/releases/download/v4.30.1/ubuntu-questing-aarch64-pd-v4.30.1.tar.xz"
     const val UBUNTU_ROOTFS_TAG = "v4.30.1"

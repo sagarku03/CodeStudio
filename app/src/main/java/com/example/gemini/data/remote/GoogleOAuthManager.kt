@@ -21,15 +21,10 @@ class GoogleOAuthManager(private val client: OkHttpClient = OkHttpClient()) {
 
     companion object {
         val CLIENT_ID: String by lazy {
-            val a = "1071006060591"
-            val b = "tmhssin2h21lcre235vtolojh4g403ep"
-            val c = "apps.googleusercontent.com"
-            "${a}-${b}.${c}"
+            com.example.gemini.BuildConfig.GOOGLE_OAUTH_CLIENT_ID
         }
         val CLIENT_SECRET: String by lazy {
-            val prefix = "GOC" + "SPX"
-            val key = "K58FWR486LdLJ1mLB8sXC4z6qDAf"
-            "${prefix}-${key}"
+            com.example.gemini.BuildConfig.GOOGLE_OAUTH_CLIENT_SECRET
         }
         const val REDIRECT_URI = "http://localhost:51121/oauth-callback"
         const val AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth"

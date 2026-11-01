@@ -34,6 +34,10 @@ android {
         buildConfigField("int", "BROWSER_MCP_PORT", "8767")
         val geminiKey = System.getenv("GEMINI_API_KEY") ?: ""
         buildConfigField("String", "GEMINI_API_KEY", "\"$geminiKey\"")
+        val googleOAuthClientId = System.getenv("GOOGLE_OAUTH_CLIENT_ID") ?: ""
+        buildConfigField("String", "GOOGLE_OAUTH_CLIENT_ID", "\"$googleOAuthClientId\"")
+        val googleOAuthClientSecret = System.getenv("GOOGLE_OAUTH_CLIENT_SECRET") ?: ""
+        buildConfigField("String", "GOOGLE_OAUTH_CLIENT_SECRET", "\"$googleOAuthClientSecret\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -115,6 +119,8 @@ secrets {
   defaultPropertiesFileName = ".env.example"
   ignoreList.add("FIREBASE_APPCHECK_DEBUG_TOKEN")
   ignoreList.add("GEMINI_API_KEY")
+  ignoreList.add("GOOGLE_OAUTH_CLIENT_ID")
+  ignoreList.add("GOOGLE_OAUTH_CLIENT_SECRET")
 }
 
 kotlin {

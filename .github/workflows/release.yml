@@ -26,27 +26,62 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew || true
 
-      - name: Build Debug APK
-        run: gradle assembleDebug --no-daemon
+      - name: Read version from version.json
+        id: version_step
+        run: |
+          VERSION_NAME=$(python3 -c "import json; print(json.load(open('version.json'))['version_name'])")
+          echo "version_name=$VERSION_NAME" >> $GITHUB_OUTPUT
+
+      - name: Decode Keystore
+        id: decode_keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ]; then
+            echo "$KEYSTORE_BASE64" | base64 -d > "${{ runner.temp }}/release.jks"
+            echo "keystore_path=${{ runner.temp }}/release.jks" >> $GITHUB_OUTPUT
+          else
+            echo "keystore_path=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build Release APK
+        env:
+          KEYSTORE_PATH: ${{ steps.decode_keystore.outputs.keystore_path }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+        run: |
+          if [ -n "${{ steps.decode_keystore.outputs.keystore_path }}" ]; then
+            gradle assembleRelease --no-daemon
+          else
+            gradle assembleDebug --no-daemon
+          fi
 
       - name: Copy & Rename APK
         run: |
           mkdir -p release-apks
-          cp app/build/outputs/apk/debug/app-debug.apk release-apks/CodeStudio-v1.0.0.apk
+          VERSION_NAME="${{ steps.version_step.outputs.version_name }}"
+          if [ -f app/build/outputs/apk/release/app-release.apk ]; then
+            cp app/build/outputs/apk/release/app-release.apk "release-apks/CodeStudio-v${VERSION_NAME}.apk"
+          else
+            cp app/build/outputs/apk/debug/app-debug.apk "release-apks/CodeStudio-v${VERSION_NAME}.apk"
+          fi
           ls -lh release-apks/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, refs/tags/) || github.ref == refs/heads/main || github.ref == refs/heads/master
+        if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         with:
-          tag_name: v1.0.0
-          name: CodeStudio v1.0.0
+          tag_name: v${{ steps.version_step.outputs.version_name }}
+          name: CodeStudio v${{ steps.version_step.outputs.version_name }}
           body: |
-            ### CodeStudio v1.0.0 Release
+            ### CodeStudio v${{ steps.version_step.outputs.version_name }} Release
             - Modern Android AI IDE & Workspace
             - Powered by Jetpack Compose, Sora Editor & Wire gRPC
-            - Download `CodeStudio-v1.0.0.apk` below to install directly on your Android device.
-          files: release-apks/CodeStudio-v1.0.0.apk
+            - Download `CodeStudio-v${{ steps.version_step.outputs.version_name }}.apk` below to install directly on your Android device.
+          files: release-apks/CodeStudio-v${{ steps.version_step.outputs.version_name }}.apk
           draft: false
           prerelease: false
         env:
