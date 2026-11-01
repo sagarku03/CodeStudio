@@ -62,14 +62,20 @@ class MainActivity : ComponentActivity() {
         } catch (_: Exception) {
         }
 
-        if (com.example.gemini.ui.components.PermissionUtils.hasNotificationPermission(this)) {
-            com.example.gemini.data.service.TermuxService.start(this)
-            com.example.gemini.data.local.LocalServerManager.autoStartOnAppLaunch(this)
+        try {
+            if (com.example.gemini.ui.components.PermissionUtils.hasNotificationPermission(this)) {
+                com.example.gemini.data.service.TermuxService.start(this)
+                com.example.gemini.data.local.LocalServerManager.autoStartOnAppLaunch(this)
+            }
+        } catch (_: Throwable) {
         }
-        com.example.gemini.data.daemon.TermuxDaemonManager.init(this)
-        com.example.gemini.ui.browser.BrowserSessionManager.instance.init(this)
-        com.example.gemini.data.local.LocalTerminalBridge.instance.init(this)
-        com.example.gemini.data.remote.AndroidLocalBridgeServer.instance.start(this)
+        try {
+            com.example.gemini.data.daemon.TermuxDaemonManager.init(this)
+            com.example.gemini.ui.browser.BrowserSessionManager.instance.init(this)
+            com.example.gemini.data.local.LocalTerminalBridge.instance.init(this)
+            com.example.gemini.data.remote.AndroidLocalBridgeServer.instance.start(this)
+        } catch (_: Throwable) {
+        }
         handleOAuthIntent(intent)
         handleIncomingFileIntent(intent)
 

@@ -32,6 +32,8 @@ android {
         buildConfigField("int", "BRIDGE_PORT", "1236")
         buildConfigField("int", "HUB_PORT", "1237")
         buildConfigField("int", "BROWSER_MCP_PORT", "8767")
+        val geminiKey = System.getenv("GEMINI_API_KEY") ?: ""
+        buildConfigField("String", "GEMINI_API_KEY", "\"$geminiKey\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -112,6 +114,7 @@ secrets {
   propertiesFileName = ".env"
   defaultPropertiesFileName = ".env.example"
   ignoreList.add("FIREBASE_APPCHECK_DEBUG_TOKEN")
+  ignoreList.add("GEMINI_API_KEY")
 }
 
 kotlin {

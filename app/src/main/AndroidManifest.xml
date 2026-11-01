@@ -146,7 +146,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:label="@string/anti_term_name"
             android:theme="@style/Theme.Gemini"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true">
             <intent-filter android:priority="1">
                 <action android:name="android.intent.action.MAIN" />
@@ -283,6 +283,10 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
+            <activity-alias
+            android:name="com.example.MainActivity"
+            android:targetActivity=".MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
